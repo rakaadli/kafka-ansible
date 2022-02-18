@@ -1,6 +1,6 @@
 # PREPARE ALL HOSTS
 
-- hosts: kafka-single  
+- hosts: kafkasingle  
   vars_files:
     - vars/settings.yaml
 

@@ -8,7 +8,7 @@ After=network.target remote-fs.target
 User={{ kafka_user }}
 Group={{ kafka_user }}
 Type=simple
-ExecStart={{ kafka_install_package_host_folder }}/{{ kafka_folder_name }}/bin/zookeeper-server-start.sh {{ kafka_install_host_symlink }}/config/zookeeper.properties
+ExecStart={{ kafka_install_package_host_folder }}/{{ kafka_folder_name }}/bin/zookeeper-server-start.sh {{ kafka_install_package_host_folder }}/{{ kafka_folder_name }}/config/zookeeper.properties
 ExecStop={{ kafka_install_package_host_folder }}/{{ kafka_folder_name }}/bin/zookeeper-server-stop.sh
 
 [Install]

@@ -1,0 +1,24 @@
+# PREPARE ALL HOSTS
+
+- hosts: kafka-single  
+  vars_files:
+    - vars/settings.yaml
+
+  tasks:    
+    - name: disable firewall
+      systemd:
+        name: firewalld
+        state: stopped
+        enabled: false
+        masked: no
+
+    - name: Create group "{{ kafka_user }}" 
+      group:
+        name: "{{ kafka_user }}"
+        state: present
+
+    - name: Create user '{{ kafka_user }}'
+      user:
+        name: "{{ kafka_user }}"
+        password: NOT_LOGGING_PASSWORD
+        group: "{{ kafka_user }}"

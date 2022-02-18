@@ -54,3 +54,30 @@
         remote_src: yes
         list_files: yes
       register: unarchived_list
+
+    - name: Removing {{ kafka_install_package_host_folder }}/{{ kafka_install_package_name }}
+      file:
+        path: "{{ kafka_install_package_host_folder }}/{{ kafka_install_package_name }}"
+        state: absent      
+      become: yes
+
+    - name: Copy file with new name
+      ansible.builtin.copy:
+        remote_src: true
+        src: "{{ kafka_install_package_host_folder }}/{{ kafka_install_package_name }}"
+        dest: "{{ kafka_install_package_host_folder }}/{{ kafka_folder_name }}"
+      when: check_file_name.stat.exists
+
+    - name: Remove old file
+      ansible.builtin.file:
+        path: "{{ kafka_install_package_host_folder }}/{{ kafka_install_package_name }}"
+        state: absent
+      when: check_file_name.stat.exists
+    
+    - name: Set KAFKA_HOME={{ kafka_install_package_host_folder }} in  /home/{{ kafka_user }}/.bashrc
+      lineinfile: 
+        dest: /home/{{ kafka_user }}/.bashrc
+        line: "export KAFKA_HOME={{ kafka_install_package_host_folder }}"
+
+    - name: Source Bashrc
+      action: shell source /home/{{ kafka_user }}/.bashrc  

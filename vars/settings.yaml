@@ -2,7 +2,8 @@ kafka_user: kafka
 jvm_package: java-11-openjdk-devel
 
 #KAFKA Folder
-kafka_install_package_host_folder: /apps/kafka
+kafka_folder_name: kafka
+kafka_install_package_host_folder: /apps
 
 #temporary folder to copy the install package in the host.
 kafka_install_package_source_folder: /apps

@@ -81,7 +81,7 @@
   vars_files:
     - vars/settings.yaml
 
-    tasks:    
+  tasks:    
     - name: "Create data folder for zookeeper {{ zookeeper_data_dir }}"
       file:
         path: "{{ zookeeper_data_dir }}"

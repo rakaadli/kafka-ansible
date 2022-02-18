@@ -141,12 +141,12 @@
       mode: 0755   
 
   - set_fact: 
-      zookeeper_connect: "{{ groups.zookeeper | join(':{{ zookeeper_port }},') }}:{{ zookeeper_port }}"
+      zookeeper_connect: "{{ groups.zookeepersingle | join(':{{ zookeeper_port }},') }}:{{ zookeeper_port }}"
       rendered_template: "{{ lookup('template', 'templates/server-properties.j2') }}"
 
   - name: Set zookeeper hosts in server.properties
     replace:
-      path: "{{ kafka_install_host_symlink }}/config/server.properties"
+      path: "{{ kafka_install_package_host_folder }}/{{ kafka_folder_name }}/config/server.properties"
       regexp: 'zookeeper.connect=localhost:2181'
       replace: "zookeeper.connect={{ zookeeper_connect }}"
 

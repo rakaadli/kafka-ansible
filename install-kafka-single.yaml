@@ -77,7 +77,7 @@
 
 ##  SET ZOOKEEPER 
 
-- hosts: zookeeper  
+- hosts: zookeeper-single 
   vars_files:
     - vars/settings.yaml
 

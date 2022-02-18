@@ -90,10 +90,10 @@
     #   become: yes
     
     - name: Move kafka_2.13-3.1.0 to kafka folder
-      command: mv /apps/kafka_2.13-3.1.0 /apps/kafka
+      command: mv {{ kafka_install_package_host_folder }}/{{ kafka_install_package_folder_name }} {{ kafka_install_package_host_folder }}/{{ kafka_folder_name }}
       args:
-        removes: /apps/kafka_2.13-3.1.0
-        creates: /apps/kafka
+        removes: {{ kafka_install_package_host_folder }}/{{ kafka_install_package_folder_name }}
+        creates: {{ kafka_install_package_host_folder }}/{{ kafka_folder_name }}
 
     - name: Set KAFKA_HOME={{ kafka_install_package_host_folder }} in  /home/{{ kafka_user }}/.bashrc
       lineinfile: 

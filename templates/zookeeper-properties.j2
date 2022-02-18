@@ -28,8 +28,8 @@ admin.enableServer=false
 # Check upgrade docs for more details.
 # snapshot.trust.empty=true
 
-{% for item in groups.zookeeper %}
-server.{{ groups.zookeeper.index(item)+1 }}={{ item }}:2888:3888
+{% for item in groups.zookeeper-single %}
+server.{{ groups.zookeeper-single.index(item)+1 }}={{ item }}:2888:3888
 {% endfor %}
 {% if zookeeper_initLimit is defined and  zookeeper_initLimit is not none  %}
 initLimit=5

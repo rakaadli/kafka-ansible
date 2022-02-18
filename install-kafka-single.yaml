@@ -73,18 +73,18 @@
     #     dest: "{{ kafka_install_package_host_folder }}/{{ kafka_folder_name }}"
     #   when: check_file_name.stat.exists
 
-    - synchronize:
-      mode: pull
-      src: "{{ kafka_install_package_host_folder }}/{{ kafka_install_package_folder_name }}"
-      dest: "{{ kafka_install_package_host_folder }}/{{ kafka_folder_name }}"
-      rsync_opts:
-      - "--remove-source-files"
+    # - name: Remove old file
+    #   ansible.builtin.file:
+    #     path: "{{ kafka_install_package_host_folder }}/{{ kafka_install_package_name }}"
+    #     state: absent
+    #   when: check_file_name.stat.exists
 
-    - name: Remove old file
-      ansible.builtin.file:
-        path: "{{ kafka_install_package_host_folder }}/{{ kafka_install_package_name }}"
-        state: absent
-      when: check_file_name.stat.exists
+      - synchronize:
+        mode: pull
+        src: "{{ kafka_install_package_host_folder }}/{{ kafka_install_package_folder_name }}"
+        dest: "{{ kafka_install_package_host_folder }}/{{ kafka_folder_name }}"
+        rsync_opts:
+        - "--remove-source-files"
     
     - name: Set KAFKA_HOME={{ kafka_install_package_host_folder }} in  /home/{{ kafka_user }}/.bashrc
       lineinfile: 

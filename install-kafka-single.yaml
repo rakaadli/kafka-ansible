@@ -93,7 +93,7 @@
     - name: Create file zookeeper.properties
       template:
         src: templates/zookeeper-properties.j2
-        dest: "{{ kafka_install_package_host_folder }}/config/zookeeper.properties"      
+        dest: "{{ kafka_install_package_host_folder }}/{{ kafka_folder_name }}/config/zookeeper.properties"      
         mode: 0755
 
     - name: Create file zookeeper.service

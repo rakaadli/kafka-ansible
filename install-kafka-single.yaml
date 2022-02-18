@@ -62,9 +62,9 @@
       become: yes
 
     - name: Check if file exists
-          ansible.builtin.stat:
-            path: "{{ kafka_install_package_host_folder }}/{{ kafka_install_package_name }}"
-          register: check_file_name
+      ansible.builtin.stat:
+        path: "{{ kafka_install_package_host_folder }}/{{ kafka_install_package_name }}"
+      register: check_file_name
           
     - name: Copy file with new name
       ansible.builtin.copy:

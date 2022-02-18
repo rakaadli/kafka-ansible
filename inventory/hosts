@@ -1,11 +1,11 @@
-[kafka-single]
+[kafkasingle]
 192.168.0.111 ansible_user=root
 
-[zookeeper-single]
+[zookeepersingle]
 192.168.0.111 ansible_user=root
 
-[bridge-single]
+[bridgesingle]
 192.168.0.111 ansible_user=root
 
-[connect-single]
+[connectsingle]
 192.168.0.111 ansible_user=root

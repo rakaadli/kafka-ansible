@@ -61,23 +61,33 @@
         state: absent      
       become: yes
 
-    - name: Check if file exists
-      ansible.builtin.stat:
-        path: "{{ kafka_install_package_host_folder }}/{{ kafka_install_package_folder_name }}"
-      register: check_file_name
+    # - name: Check if file exists
+    #   ansible.builtin.stat:
+    #     path: "{{ kafka_install_package_host_folder }}/{{ kafka_install_package_folder_name }}"
+    #   register: check_file_name
           
-    - name: Copy file with new name
-      ansible.builtin.copy:
-        remote_src: true
-        src: "{{ kafka_install_package_host_folder }}/{{ kafka_install_package_folder_name }}"
-        dest: "{{ kafka_install_package_host_folder }}/{{ kafka_folder_name }}"
-      when: check_file_name.stat.exists
+    # - name: Copy file with new name
+    #   ansible.builtin.copy:
+    #     remote_src: true
+    #     src: "{{ kafka_install_package_host_folder }}/{{ kafka_install_package_folder_name }}"
+    #     dest: "{{ kafka_install_package_host_folder }}/{{ kafka_folder_name }}"
+    #   when: check_file_name.stat.exists
 
-    - name: Remove old file
-      ansible.builtin.file:
-        path: "{{ kafka_install_package_host_folder }}/{{ kafka_install_package_folder_name }}"
-        state: absent
-      when: check_file_name.stat.exists
+    # - name: Remove old file
+    #   ansible.builtin.file:
+    #     path: "{{ kafka_install_package_host_folder }}/{{ kafka_install_package_folder_name }}"
+    #     state: absent
+    #   when: check_file_name.stat.exists
+
+    - name: Copy kafka package to remote server
+      copy: src={{kafka_install_package_host_folder}}/{{ kafka_folder_name }}/{{ kafka_install_package_folder_name }} dest={{kafka_install_package_host_folder}}/{{ kafka_folder_name }}
+      become: yes
+    
+    - name: Removing {{kafka_install_package_host_folder}}/{{ kafka_folder_name }}/{{ kafka_install_package_folder_name }}
+      file:
+        path: "{{kafka_install_package_host_folder}}/{{ kafka_folder_name }}/{{ kafka_install_package_folder_name }}"
+        state: absent      
+      become: yes
     
     - name: Set KAFKA_HOME={{ kafka_install_package_host_folder }} in  /home/{{ kafka_user }}/.bashrc
       lineinfile: 

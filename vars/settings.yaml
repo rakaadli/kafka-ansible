@@ -9,4 +9,5 @@ kafka_install_package_host_folder: /apps
 kafka_install_package_source_folder: /apps
 
 #Source 
+kafka_install_package_folder_name: kafka_2.13-3.1.0
 kafka_install_package_name: kafka_2.13-3.1.0.tgz

@@ -2,7 +2,7 @@
 
 - hosts: kafkasingle  
   vars_files:
-    - vars/single/settings.yaml
+    - vars/cluster/settings.yaml
 
   tasks:    
     - name: disable firewall
@@ -12,16 +12,16 @@
         enabled: false
         masked: no
 
-    - name: Create group "{{ group_user }}" 
+    - name: Create group "{{ kafka_user }}" 
       group:
-        name: "{{ group_user }}"
+        name: "{{ kafka_user }}"
         state: present
 
     - name: Create user '{{ kafka_user }}'
       user:
         name: "{{ kafka_user }}"
         password: NOT_LOGGING_PASSWORD
-        group: "{{ group_user }}"
+        group: "{{ kafka_user }}"
 
     - name: 'Install unzip'
       yum:

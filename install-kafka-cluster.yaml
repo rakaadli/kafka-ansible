@@ -1,6 +1,6 @@
 # PREPARE ALL HOSTS
 
-- hosts: kafkasingle  
+- hosts: kafkacluster  
   vars_files:
     - vars/cluster/settings.yaml
 
@@ -77,7 +77,7 @@
 
 ##  SET ZOOKEEPER 
 
-- hosts: zookeepersingle 
+- hosts: zookeepercluster 
   vars_files:
     - vars/settings.yaml
 

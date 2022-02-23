@@ -119,7 +119,7 @@
 
 ##  SET KAFKA BROKERS   
 
-- hosts: kafkasingle
+- hosts: kafkacluster
   vars_files:
     - vars/settings.yaml
 

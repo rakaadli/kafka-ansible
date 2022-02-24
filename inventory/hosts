@@ -1,3 +1,6 @@
+[testmyserver]
+192.168.56.113
+
 [kafkasingle]
 192.168.0.111 ansible_user=root
 

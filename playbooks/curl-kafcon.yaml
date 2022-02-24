@@ -4,7 +4,7 @@
 
   tasks:
   - name: post to consul
-    shell: >-  
+    command: >-  
     curl 
     --request GET 'http://192.168.56.113:8083/connectors' 
     --header "Content-Type: application/json" 

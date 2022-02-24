@@ -3,19 +3,33 @@
     - vars/single/settings.yaml
 
   tasks:
-  - name: post to consul
-    command: >-  
-    curl 
-    --request GET 'http://192.168.56.113:8083/connectors' 
-    --header "Content-Type: application/json" 
+  # - name: post to consul
+  #   command: >-  
+  #   curl 
+  #   --request GET 'http://192.168.56.113:8083/connectors' 
+  #   --header "Content-Type: application/json" 
 
-  - name: post to consul 2
-    command: >-
-    curl 
-    --request POST 'http://192.168.56.113:8083/connectors' 
-    --header 'Content-Type: application/json' 
-    --data '{"name": "source-table-from-mysql-to-postgres","config": {"connector.class": "io.confluent.connect.jdbc.JdbcSourceConnector","connection.url": "jdbc:mysql://45.77.252.52:3306/employeemanager?user=username&password=password","table.whitelist": "employee","mode": "bulk","topic.prefix": "common.source.","key.converter.schema.registry.url": "http://192.168.56.113:8081","value.converter.schema.registry.url": "http://192.168.56.113:8081","batch.size": "10000","acks": "-1"}'
+  # - name: post to consul 2
+  #   command: >-
+  #   curl 
+  #   --request POST 'http://192.168.56.113:8083/connectors' 
+  #   --header 'Content-Type: application/json' 
+  #   --data '{"name": "source-table-from-mysql-to-postgres","config": {"connector.class": "io.confluent.connect.jdbc.JdbcSourceConnector","connection.url": "jdbc:mysql://45.77.252.52:3306/employeemanager?user=username&password=password","table.whitelist": "employee","mode": "bulk","topic.prefix": "common.source.","key.converter.schema.registry.url": "http://192.168.56.113:8081","value.converter.schema.registry.url": "http://192.168.56.113:8081","batch.size": "10000","acks": "-1"}'
     
+   - name: Create Connector
+      uri:
+        url: "https://192.168.56.113:8083/connectors"
+        method: POST
+        body: "{{ lookup('file', 'test.json' ) }}"
+        body_format: json
+        validate_certs: no
+        status_code: [201, 201, 204]
+        headers:
+          Content-Type: application/json
+        # If you're interested in the response
+        return_content: yes
+      # register: api_result
+      run_once: yes
   # - name: First task (uri)
   #     uri:
     #All Source

@@ -1,0 +1,14 @@
+{
+    "name": "source-table-from-mysql-to-postgres",
+    "config": {
+        "connector.class": "io.confluent.connect.jdbc.JdbcSourceConnector",
+        "connection.url": "jdbc:mysql://45.77.252.52:3306/employeemanager?user=username&password=password",
+        "table.whitelist": "employee",
+        "mode": "bulk",
+        "topic.prefix": "common.source.",
+        "key.converter.schema.registry.url": "http://192.168.56.113:8081",
+        "value.converter.schema.registry.url": "http://192.168.56.113:8081",
+        "batch.size": "10000",
+        "acks": "-1"
+    }
+}

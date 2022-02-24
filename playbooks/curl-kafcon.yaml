@@ -3,7 +3,7 @@
     - vars/single/settings.yaml
 
   tasks:
-   - name: Create Connector (uri)
+    - name: Create Connector (uri)
       uri:
         url: "http://192.168.56.113:8083/connectors"
         headers:
@@ -19,7 +19,8 @@
         return_content: yes
       # register: api_result
       run_once: yes
-  
+  # - name: First task (uri)
+  #     uri:
     #All Source
     #Ad1Partner
     #Ad1Dispatcher

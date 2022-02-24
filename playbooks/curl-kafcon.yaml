@@ -1,4 +1,4 @@
-- hosts: testmyserver  
+- hosts: testmyserver 
   vars_files:
     - ../vars/single/settings.yaml
 

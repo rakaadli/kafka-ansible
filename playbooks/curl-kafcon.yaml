@@ -1,6 +1,6 @@
 - hosts: testmyserver  
   vars_files:
-    - vars/single/settings.yaml
+    - ../vars/single/settings.yaml
 
   tasks:
     - name: Create Connector (uri)

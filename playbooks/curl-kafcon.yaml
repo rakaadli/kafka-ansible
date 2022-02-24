@@ -4,7 +4,11 @@
 
   tasks:
   - name: post to consul
-    shell:  curl --location --request GET 'http://192.168.56.113:8083/connectors' --header 'Content-Type: application/json' 
+    shell: >-  
+    curl 
+    --location 
+    --request GET 'http://192.168.56.113:8083/connectors' 
+    --header "Content-Type: application/json" 
 
   - name: post to consul 2
     command: >-

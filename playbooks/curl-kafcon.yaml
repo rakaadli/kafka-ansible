@@ -46,7 +46,8 @@
         return_content: yes
       # register: api_result
       # run_once: yes
-      with_items: dir_out.stdout_lines
+      with_items: 
+        - dir_out.stdout_lines
   # - name: First task (uri)
   #     uri:
     #All Source

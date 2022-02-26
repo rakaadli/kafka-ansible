@@ -1,0 +1,1 @@
+ansible-playbook -i ./inventory ../playbooks/curl-kafcon.yaml --extra-vars 'ansible_ssh_pass=qawsedrf' --extra-vars='ansible_ssh_user=root'

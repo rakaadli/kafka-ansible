@@ -18,17 +18,21 @@
     #     file_type: directory
     #   register: found_directories
 
-    - name: ls -d /apps/kafka-ansible/playbooks/body*
-      find:
-        paths: /apps/kafka-ansible/playbooks
-        patterns: "body*"
-        recurse: no
-        file_type: directory
-      register: found_directories
+    # - name: ls -d /apps/kafka-ansible/playbooks/body*
+    #   find:
+    #     paths: /apps/kafka-ansible/playbooks
+    #     patterns: "body*"
+    #     recurse: no
+    #     file_type: directory
+    #   register: found_directories
 
-    - debug:
-        msg: "{{ [item.path] }} "
-      with_items: "{{ found_directories.files }}"
+    # - debug:
+    #     msg: "{{ [item.path] }} "
+    #   with_items: "{{ found_directories.files }}"
+
+    - name: find nrpe.cfg
+      shell: find /apps/kafka-ansible/playbooks/bodyjsonforcurl/ -name *.j2
+      register: curljsonfilesname
 
     - name: Create Connector (uri)
       uri:
@@ -48,7 +52,8 @@
       # run_once: yes
       # with_items:  [test2.j2, test3.j2]
       with_items: 
-        - /apps/kafka-ansible/playbooks/bodyjsonforcurl/*.j2
+        - curljsonfilesname
+        # - /apps/kafka-ansible/playbooks/bodyjsonforcurl/*.j2
   # - name: First task (uri)
   #     uri:
     #All Source

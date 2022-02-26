@@ -40,7 +40,7 @@
         headers:
           Content-Type: "application/json"
         method: POST
-        body: "{{ lookup('file', './bodyjsonforcurl/{{item}}' ) }}"
+        body: "{{ lookup('file', '{{item}}' ) }}"
         body_format: json
         validate_certs: no
         status_code: [201, 201, 204]

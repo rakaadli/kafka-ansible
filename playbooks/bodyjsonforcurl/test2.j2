@@ -2,7 +2,7 @@
     "name": "source-table-from-mysql-to-postgres-2",
     "config": {
         "connector.class": "io.confluent.connect.jdbc.JdbcSourceConnector",
-        "connection.url": {{ source_connection_url }},
+        "connection.url": "{{ source_connection_url }}",
         "table.whitelist": "employee-2",
         "mode": "bulk",
         "topic.prefix": "common.source.",

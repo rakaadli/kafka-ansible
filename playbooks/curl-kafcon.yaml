@@ -18,7 +18,7 @@
     #     file_type: directory
     #   register: found_directories
 
-    - name: ls -d /apps/kafka-ansible/playbooks/bodyjsonforcurl
+    - name: ls -d /apps/kafka-ansible/playbooks/body*
       find:
         paths: /apps/kafka-ansible/playbooks
         patterns: "body*"

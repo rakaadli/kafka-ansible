@@ -4,11 +4,11 @@
     - ../vars/connect/connect-curl-settings.yaml
 
   tasks:
-    - command: "ls {{testdirectory}}"
+    - command: "ls -d {{testdirectory}}"
       register: dir_out
 
-    # - debug: var={{item}}
-    #   with_items: dir_out.stdout_lines
+    - debug: var={{item}}
+      with_items: dir_out.stdout_lines
 
     # - name: ls -d /apps/kafka-ansible/playbooks/bodyjsonforcurl/*.j2
     #   find:
@@ -46,7 +46,9 @@
         return_content: yes
       # register: api_result
       # run_once: yes
-      with_items:  [test2.j2, test3.j2]
+      # with_items:  [test2.j2, test3.j2]
+      with_items: 
+        - dir_out.stdout_lines
   # - name: First task (uri)
   #     uri:
     #All Source

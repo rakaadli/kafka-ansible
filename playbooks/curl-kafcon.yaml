@@ -25,7 +25,7 @@
       run_once: yes
       with_items: 
         - "{{curljsonfilesname.stdout_lines}}"
-     - debug:
+    - debug:
         var=api_result
   
     #All Source

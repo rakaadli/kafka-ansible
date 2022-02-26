@@ -4,39 +4,13 @@
     - ../vars/connect/connect-curl-settings.yaml
 
   tasks:
-    - command: "ls -d {{testdirectory}}"
-      register: dir_out
-
-    - debug: var={{item}}
-      with_items: dir_out.stdout_lines
-
-    # - name: ls -d /apps/kafka-ansible/playbooks/bodyjsonforcurl/*.j2
-    #   find:
-    #     paths: /apps/kafka-ansible/playbooks/bodyjsonforcurl
-    #     patterns: "*.j2"
-    #     recurse: no
-    #     file_type: directory
-    #   register: found_directories
-
-    # - name: ls -d /apps/kafka-ansible/playbooks/body*
-    #   find:
-    #     paths: /apps/kafka-ansible/playbooks
-    #     patterns: "body*"
-    #     recurse: no
-    #     file_type: directory
-    #   register: found_directories
-
-    # - debug:
-    #     msg: "{{ [item.path] }} "
-    #   with_items: "{{ found_directories.files }}"
-
-    - name: find nrpe.cfg
+    - name: find all connector .j2
       shell: find /apps/kafka-ansible/playbooks/bodyjsonforcurl/ -name *.j2
       register: curljsonfilesname
 
     - name: Create Connector (uri)
       uri:
-        url: "http://192.168.56.113:8083/connectors"
+        url: "http://{{kafka_connector_server}}:{{kafka_connector_port}}/connectors"
         headers:
           Content-Type: "application/json"
         method: POST
@@ -46,16 +20,14 @@
         status_code: [201, 201, 204]
         headers:
           Content-Type: application/json
-        # If you're interested in the response
         return_content: yes
-      # register: api_result
-      # run_once: yes
-      # with_items:  [test2.j2, test3.j2]
+      register: api_result
+      run_once: yes
       with_items: 
         - "{{curljsonfilesname.stdout_lines}}"
-        # - /apps/kafka-ansible/playbooks/bodyjsonforcurl/*.j2
-  # - name: First task (uri)
-  #     uri:
+     - debug:
+        var=api_result
+  
     #All Source
     #Ad1Partner
     #Ad1Dispatcher

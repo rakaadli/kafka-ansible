@@ -1,6 +1,6 @@
 - hosts: testmyserver 
   vars_files:
-    - ../vars/conenct/settings.yaml
+    - ../vars/connect/settings.yaml
     - ../vars/connect/connect-curl-settings.yaml
 
   tasks:

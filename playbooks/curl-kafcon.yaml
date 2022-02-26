@@ -7,7 +7,7 @@
     - command: "ls {{testdirectory}}"
       register: dir_out
 
-    - debug: var={{item}}
+    - debug: var={{dir_out.stdout_lines}}
       with_items: dir_out
 
     - name: Create Connector (uri)

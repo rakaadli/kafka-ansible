@@ -4,8 +4,8 @@
     - ../vars/connect/connect-curl-settings.yaml
 
   tasks:
-    # - command: "ls {{testdirectory}}"
-    #   register: dir_out
+    - command: "ls {{testdirectory}}"
+      register: dir_out
 
     # - debug: var={{item}}
     #   with_items: dir_out.stdout_lines
@@ -18,17 +18,17 @@
     #     file_type: directory
     #   register: found_directories
 
-    - name: ls -d /apps/kafka-ansible/playbooks/bodyjsonforcurl
-      find:
-        paths: /apps/kafka-ansible/playbooks
-        patterns: "bodyjsonforcurl"
-        recurse: no
-        file_type: directory
-      register: found_directories
+    # - name: ls -d /apps/kafka-ansible/playbooks/bodyjsonforcurl
+    #   find:
+    #     paths: /apps/kafka-ansible/playbooks
+    #     patterns: "bodyjsonforcurl"
+    #     recurse: no
+    #     file_type: directory
+    #   register: found_directories
 
-    - debug:
-        msg: "{{ [item.path] }} "
-      with_items: "{{ found_directories.files }}"
+    # - debug:
+    #     msg: "{{ [item.path] }} "
+    #   with_items: "{{ found_directories.files }}"
 
     - name: Create Connector (uri)
       uri:
@@ -36,7 +36,7 @@
         headers:
           Content-Type: "application/json"
         method: POST
-        body: "{{ lookup('file', './bodyjsonforcurl/*.j2' ) }}"
+        body: "{{ lookup('file', './bodyjsonforcurl/{{item}}' ) }}"
         body_format: json
         validate_certs: no
         status_code: [201, 201, 204]
@@ -46,7 +46,7 @@
         return_content: yes
       # register: api_result
       run_once: yes
-      with_fileglob: '*.txt'
+      with_items: dir_out.stdout_lines
   # - name: First task (uri)
   #     uri:
     #All Source

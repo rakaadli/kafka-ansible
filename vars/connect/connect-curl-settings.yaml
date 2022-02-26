@@ -1,1 +1,2 @@
 source_connection_url: jdbc:mysql://45.77.252.52:3306/employeemanager?user=username&password=password
+testdirectory: /apps/kafka-ansible/playbooks/bodyjsonforcurl

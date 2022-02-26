@@ -4,7 +4,7 @@
     - ../vars/connect/connect-curl-settings.yaml
 
   tasks:
-    - command: "ls {{directory}}"
+    - command: "ls {{testdirectory}}"
       register: dir_out
 
     - debug: var={{item}}

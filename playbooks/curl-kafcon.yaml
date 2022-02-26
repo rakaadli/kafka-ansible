@@ -45,7 +45,7 @@
         # If you're interested in the response
         return_content: yes
       # register: api_result
-      run_once: yes
+      # run_once: yes
       with_items: dir_out.stdout_lines
   # - name: First task (uri)
   #     uri:

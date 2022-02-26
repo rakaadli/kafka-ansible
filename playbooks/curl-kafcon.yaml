@@ -16,7 +16,7 @@
         headers:
           Content-Type: "application/json"
         method: POST
-        body: "{{ lookup('file', './bodyjsonforcurl/test2.j2' ) }}"
+        body: "{{ lookup('file', './bodyjsonforcurl/*.j2' ) }}"
         body_format: json
         validate_certs: no
         status_code: [201, 201, 204]

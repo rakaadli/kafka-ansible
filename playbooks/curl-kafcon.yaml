@@ -18,17 +18,17 @@
     #     file_type: directory
     #   register: found_directories
 
-    # - name: ls -d /apps/kafka-ansible/playbooks/bodyjsonforcurl
-    #   find:
-    #     paths: /apps/kafka-ansible/playbooks
-    #     patterns: "bodyjsonforcurl"
-    #     recurse: no
-    #     file_type: directory
-    #   register: found_directories
+    - name: ls -d /apps/kafka-ansible/playbooks/bodyjsonforcurl
+      find:
+        paths: /apps/kafka-ansible/playbooks
+        patterns: "bodyjsonforcurl"
+        recurse: no
+        file_type: directory
+      register: found_directories
 
-    # - debug:
-    #     msg: "{{ [item.path] }} "
-    #   with_items: "{{ found_directories.files }}"
+    - debug:
+        msg: "{{ [item.path] }} "
+      with_items: "{{ found_directories.files }}"
 
     - name: Create Connector (uri)
       uri:

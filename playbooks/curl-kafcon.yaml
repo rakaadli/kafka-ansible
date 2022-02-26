@@ -48,7 +48,7 @@
       # run_once: yes
       # with_items:  [test2.j2, test3.j2]
       with_items: 
-        - dir_out.stdout_lines
+        - /apps/kafka-ansible/playbooks/bodyjsonforcurl/*.j2
   # - name: First task (uri)
   #     uri:
     #All Source

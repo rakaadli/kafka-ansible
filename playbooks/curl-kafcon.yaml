@@ -8,7 +8,7 @@
       register: dir_out
 
     - debug: var={{item}}
-      with_items: dir_out.stdout_lines
+      with_items: dir_out
 
     - name: Create Connector (uri)
       uri:
@@ -26,6 +26,7 @@
         return_content: yes
       # register: api_result
       run_once: yes
+      with_fileglob: '*.txt'
   # - name: First task (uri)
   #     uri:
     #All Source

@@ -14,8 +14,8 @@ kafka_install_package_folder_name: kafka_2.13-3.1.0
 kafka_install_package_name: kafka_2.13-3.1.0.tgz
 
 #ZOOKEEPER Zookeeper.properties
-zookeeper_data_dir: /apps/zookeeper-log
-zookeeper_port: 2181
+zookeeper_data_dir: /apps/zookeeper-connect-log
+zookeeper_port: 2182
 zookeeper_init_limit: 5
 zookeeper_sync_limit: 2
 
@@ -27,8 +27,8 @@ kafka_opts:
 
 # KAFKA server.properties [1]
 # Commom properties with default values
-kafka_log_dirs: /apps/kafka-log
-kafka_listeners_port: 9092
+kafka_log_dirs: /apps/kafka-connect-log
+kafka_listeners_port: 9093
 kafka_advertised_listeners:
 kafka_num_network_threads: 3
 kafka_num_io_threads: 8

@@ -1,6 +1,7 @@
 - hosts: testmyserver 
   vars_files:
-    - ../vars/single/settings.yaml
+    - ../vars/conenct/settings.yaml
+    - ../vars/connect/connect-curl-settings.yaml
 
   tasks:
     - name: Create Connector (uri)

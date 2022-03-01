@@ -40,7 +40,7 @@
         path: "{{ kafka_install_package_host_folder }}"
         state: directory
         mode: 0755
-        group: "{{ kafka_user }}"
+        group: "{{ group_user }}"
         owner: "{{ kafka_user }}" 
     
     - name: Copy kafka package to remote server

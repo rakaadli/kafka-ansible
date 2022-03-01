@@ -4,11 +4,11 @@
         "connector.class": "io.confluent.connect.jdbc.JdbcSourceConnector",
         "connection.url": "{{ source_connection_url }}",
         "table.whitelist": "employee-3",
-        "mode": "bulk",
-        "topic.prefix": "common.source.",
-        "key.converter.schema.registry.url": "http://192.168.56.113:8081",
-        "value.converter.schema.registry.url": "http://192.168.56.113:8081",
-        "batch.size": "10000",
-        "acks": "-1"
+        "mode": "{{ source_connector_mode }}",
+        "topic.prefix": "{{topic_prefix}}",
+        "key.converter.schema.registry.url": "{{key_converter_schema_registry_url}}",
+        "value.converter.schema.registry.url": "{{value_converter_schema_registry_url}}",
+        "batch.size": "{{batch_size}}",
+        "acks": "{{acks}}"
     }
 }

@@ -23,7 +23,7 @@ zookeeper_sync_limit: 2
 kafka_heap_opts: -Xmx256M -Xms128M
 kafka_jmx_opts: -Dcom.sun.management.jmxremote=true -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Djava.net.preferIPv4Stack=true -Dcom.sun.management.jmxremote.port=9990
 kafka_gc_log_opts: 
-kafka_opts:
+kafka_opts: 7071
 
 # KAFKA server.properties [1]
 # Commom properties with default values

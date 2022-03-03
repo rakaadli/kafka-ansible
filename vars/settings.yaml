@@ -43,6 +43,8 @@ kafka_group_initial_rebalance_delay_ms: 0
 kafka_socket_send_buffer_bytes: 102400
 kafka_socket_receive_buffer_bytes: 102400
 kafka_socket_request_max_bytes: 104857600
+kafka_min_insync_replicas: 2 
+kafka_default_replication_factor: 3
 
 # 
 # KAFKA server.properties [2]:
